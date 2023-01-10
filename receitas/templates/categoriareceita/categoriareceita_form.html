@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html '%}
+{% load crispy_forms_tags %}
+{% block title %} Create categoria Receita {% endblock %}
+{% block content %}
+<div class="content">
+    <div class="form-login">
+        <h3>Criar uma Categoria de Receita</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button style="margin-top: 20px;"type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    
+</div>
+{% endblock %}

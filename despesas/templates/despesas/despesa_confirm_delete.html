@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{%block content%}
+<div class="center">
+        <form method="post" class="form-login">
+            {% csrf_token %}
+            <h2>Delete a Despesa {{despesa.name}}?</h2>
+            <p>Are you sure that you want to delete {{despesa.name}}?</p>
+            <p class="form-buttons">
+                <input type="submit" class="btn btn-primary" value="Delete">
+                <a href="/despesas/list" class="btn btn-outline">Cancel</a>
+            </p>
+        </form>
+        <a style="margin-top: 20px;" href="/despesas/list" class="btn btn-primary">Voltar</a>
+
+
+    
+</div>
+
+{%endblock%}

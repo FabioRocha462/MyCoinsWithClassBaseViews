@@ -1,9 +1,21 @@
+
 {% extends 'layouts/base.html' %}
+{% load static %}
 {% block title %} Index  {% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-        <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-    {% else %}
-        <p>Welcome, new user. Please log in.</p>
+
+<div class="row align-items-center">
+    <div class="col">
+        {% if user.is_authenticated %}
+        <h1><span style = "color: #8bc5be;font-size: 80px;">Welcome</span>, {{ user.get_username }}</h1>  
+        <h1 style = "color: #8bc5be;font-size: 60px;">MyCoins with class base views</h1>
     {% endif %}
+    </div>
+    <div class="col">
+      <img src="{% static 'assets/image/index.png' %}" 
+      height="500px" 
+      width="500px"alt="">
+    </div>
+</div>
+
 {% endblock %}
