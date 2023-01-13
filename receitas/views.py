@@ -14,11 +14,17 @@ class ReceitaCreateView(LoginRequiredMixin, CreateView):
     fields = ['name','value','typeReceita', 'date', 'categoria']
     template_name = 'receitas/receita_form.html'
     success_url = reverse_lazy("receitas:list_Receitas")
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(self.request, "The task was created successfully.")
+        return super(ReceitaCreateView,self).form_valid(form)
 
 class ReceitaListView(LoginRequiredMixin, ListView):
     model = Receita
     context_object_name = 'list_Receitas'
-    queryset = Receita.objects.all()
+    def get_queryset(self):
+        user = self.request.user
+        return Receita.objects.filter(user = user)
     paginate_by = 4
 
 class CategoriaReceitaCreateView(LoginRequiredMixin, CreateView):

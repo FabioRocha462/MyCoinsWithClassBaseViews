@@ -7,6 +7,7 @@ class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField("Email", unique=True)
     cpf = models.CharField(max_length=14, unique = True)
+    image = models.ImageField(upload_to = "account/", null=True, blank=True)
 
 
     USERNAME_FIELD = 'email'

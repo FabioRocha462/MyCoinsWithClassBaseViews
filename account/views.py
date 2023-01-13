@@ -26,7 +26,7 @@ class Register(View):
         return render(request, self.template_name, {'form': self.form_class})
     
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")

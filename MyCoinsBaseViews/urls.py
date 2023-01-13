@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 from account.views import Home
 
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     #urls apps
@@ -24,4 +26,5 @@ urlpatterns = [
     path("account/", include("account.urls", namespace="account")),
     path("despesas/", include("despesas.urls", namespace="despesas")),
     path("receitas/", include("receitas.urls", namespace="receitas")),
-]
+]#+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

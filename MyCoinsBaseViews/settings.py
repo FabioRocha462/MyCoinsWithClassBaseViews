@@ -136,3 +136,9 @@ AUTH_USER_MODEL = "account.User"
 LOGIN_URL = "account:login"
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "account:login"
+
+#media image user
+
+
+MEDIA_ROOT = os.path.join((BASE_DIR), 'media')
+MEDIA_URL = '/media/'
