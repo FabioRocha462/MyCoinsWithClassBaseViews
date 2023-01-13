@@ -10,6 +10,7 @@ class RegisterForm(UserCreationForm):
             "username",
             "email",
             "cpf",
+            "image",
             "password1",
             "password2"
         ]
