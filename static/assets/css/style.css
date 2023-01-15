@@ -22,5 +22,13 @@ span,a{
     text-decoration: none;
 }
 
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.saldo_card{
+    background-color: #8bc5be;
+}
 
