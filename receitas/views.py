@@ -11,7 +11,8 @@ from . form import ReceitaForm
 
 class ReceitaCreateView(LoginRequiredMixin, CreateView):
     model = Receita
-    fields = ['name','value','typeReceita', 'date', 'categoria']
+    form_class = ReceitaForm
+    #fields = ['name','value','typeReceita', 'date', 'categoria']
     template_name = 'receitas/receita_form.html'
     success_url = reverse_lazy("receitas:list_Receitas")
     def form_valid(self, form):
@@ -32,6 +33,10 @@ class CategoriaReceitaCreateView(LoginRequiredMixin, CreateView):
     fields = ['name']
     template_name = 'categoriareceita/categoriareceita_form.html'
     success_url = reverse_lazy("receitas:list_Receitas")
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(self.request, "The task was created successfully.")
+        return super(CategoriaReceita,self).form_valid(form)
 
 class ReceitaUpdateView(LoginRequiredMixin, UpdateView):
     model = Receita
