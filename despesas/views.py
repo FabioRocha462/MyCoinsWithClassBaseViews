@@ -14,6 +14,9 @@ class DespesaCreate(LoginRequiredMixin,CreateView):
     model = Despesa
     form_class = DespesaForm
     #fields=['name','value','typeDespesa','date','categoria']
+    def get_queryset(self):
+        user = self.request.user
+        return CategoriaDespesa.objects.filter(user=user)
     template_name = 'despesas/despesa_form.html'
     success_url = reverse_lazy("despesas:list_Despesas")
 
