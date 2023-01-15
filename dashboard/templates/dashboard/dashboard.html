@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+<div style="background-color:black;padding:2rem; color:white; border-radius: 5px;box-shadow: 5px 5px 15px rgba(0,0,0,2);margin-bottom: 50px;" class="container"> 
+  <div class="center">
+    <div  id="saldo">
+    </div>
+  </div>
+    <div class="row align-items-start">
+        <div class="col">
+          <span style=" display: flex;align-items: center;justify-content: center;"><strong>Despesa por data</strong> </span>
+          <form id="form_despesa" style="background-color: #8bc5be;"class="form-control"action="">
+            <input class="form-control"type="date" name="date">
+            <div class="center">
+              <button style="margin-top: 20px; display: flex;align-items: center;justify-content: center;"class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+          </form>
+          
+        </div>
+        <div class="col">
+          <span style=" display: flex;align-items: center;justify-content: center;"><strong>Receita por data</strong> </span>
+          <form style="background-color: #8bc5be;" class="form-control"action="">
+            <input class="form-control"type="date" name="date">
+            <div class="center">
+              <button style="margin-top: 20px; display: flex;align-items: center;justify-content: center;"class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col">
+          <span style=" display: flex;align-items: center;justify-content: center;"><strong>Lucro por data</strong> </span>
+          <form style="background-color: #8bc5be;" class="form-control"action="">
+            <input class="form-control"type="date" name="date">
+            <div class="center">
+              <button style="margin-top: 20px; display: flex;align-items: center;justify-content: center;"class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
+      <div class="row align-items-center">
+        <div class="col">
+          <canvas id="despesasanuais"  width="250" height="200"> </canvas>
+        </div>
+        <div class="col">
+          <canvas id="receitasanuais"  width="250" height="200"> </canvas>
+        </div>
+        <div class="col">
+          <canvas id="lucrosanuais"  width="250" height="200"> </canvas>
+        </div>
+      </div>
+</div>
+<script>
+  window.onload = function(e) {
+    saldo("{% url 'dashboard:valores' %}");
+  }
+</script>
+{% endblock %}

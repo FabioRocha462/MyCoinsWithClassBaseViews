@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
-
+from crum import get_current_user
 
 from . models import Despesa,CategoriaDespesa
 from . form import DespesaForm
@@ -12,10 +12,11 @@ from . form import DespesaForm
 
 class DespesaCreate(LoginRequiredMixin,CreateView):
     model = Despesa
-    #form_class = DespesaForm
-    fields=['name','value','typeDespesa','date','categoria']
+    form_class = DespesaForm
+    #fields=['name','value','typeDespesa','date','categoria']
     template_name = 'despesas/despesa_form.html'
     success_url = reverse_lazy("despesas:list_Despesas")
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         messages.success(self.request, "The task was created successfully.")

@@ -26,5 +26,6 @@ urlpatterns = [
     path("account/", include("account.urls", namespace="account")),
     path("despesas/", include("despesas.urls", namespace="despesas")),
     path("receitas/", include("receitas.urls", namespace="receitas")),
+    path("dashboard/", include("dashboard.urls", namespace="dashboard")),
 ]#+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
