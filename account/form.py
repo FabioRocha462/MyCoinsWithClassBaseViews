@@ -15,4 +15,19 @@ class RegisterForm(UserCreationForm):
             "password2"
         ]
 
+class UpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "email",
+            "image",
+        ]
+
+        def __init__(self,*args,**kwargs):
+            super(UpdateForm, self).__init__(*args, **kwargs)
+            self.fields["cpf"].widget.attrs["disabled"] = True
+
+
 

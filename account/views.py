@@ -8,9 +8,11 @@ from django.contrib import messages
 from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-
+from django.views.generic import UpdateView,DetailView
 from . form import RegisterForm
 
+from .models import User
+from .form import RegisterForm,UpdateForm
 # Create your views here.
 class Home(LoginRequiredMixin, TemplateView):
     template_name = "account/index.html"
@@ -50,3 +52,12 @@ class LogoutView(View):
         logout(request)
         return reverse("login")
     
+class UpdatePerfil(LoginRequiredMixin,UpdateView):
+    model = User
+    form_class = UpdateForm
+    success_url = reverse_lazy("index")
+
+class DetailPerfil(LoginRequiredMixin,DetailView):
+    model = User
+    context_object_name = 'account'
+
